@@ -4,7 +4,14 @@
     @if (Auth::check())
         <div class="row">
             <aside class="col-sm-4">
-                @include('users.card', ['user' => Auth::user()])
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ Auth::user()->name }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <img class="rounded img-fluid" src="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
+                    </div>
+                </div>
             </aside>
             <div class="col-sm-8">
                 @if (Auth::id() == $user->id)
