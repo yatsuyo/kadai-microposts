@@ -1,11 +1,10 @@
-@if (Auth::id() != $user->id)
-    @if (Auth::user()->is_favorite($user->id))
-        {!! Form::open(['route' => ['user.unfavorite', $user->id], 'method' => 'delete']) !!}
-            {!! Form::submit('Unfavorite', ['class' => "btn btn-danger btn-block"]) !!}
+
+    @if (Auth::user()->is_favorite($micropost->id))
+        {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+            {!! Form::submit('Unfavorite', ['class' => "btn btn-secondary"]) !!}
         {!! Form::close() !!}
     @else
-        {!! Form::open(['route' => ['user.favorite', $user->id]]) !!}
-            {!! Form::submit('Favorite', ['class' => "btn btn-primary btn-block"]) !!}
+        {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+            {!! Form::submit('Favorite', ['class' => "btn btn-success"]) !!}
         {!! Form::close() !!}
     @endif
-@endif

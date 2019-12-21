@@ -3,6 +3,7 @@
 @section('content')
     @if (Auth::check())
         <div class="row">
+            
             <aside class="col-sm-4">
                 @include('users.card', ['user' => Auth::user()])
             </aside>
